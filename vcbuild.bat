@@ -97,8 +97,9 @@ if errorlevel 1 goto exit
 @rem Run tests if requested.
 if "%test%"=="" goto exit
 echo Running tests...
-.\build\%config%\test-snowcrash.exe
+.\build\%config%\test-libsnowcrash.exe
 
+if defined inttest bundle exec cucumber
 @rem All Done
 goto exit
 

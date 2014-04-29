@@ -1,6 +1,5 @@
 require 'aruba/cucumber'
 require 'rbconfig'
-include Config
 
 Before do
   @dirs << "../../features/fixtures"

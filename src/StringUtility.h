@@ -23,13 +23,21 @@ namespace snowcrash {
 
     // Trim string from start
     inline std::string& TrimStringStart(std::string &s) {
+#ifdef _WIN32
+        s.erase(0, s.find_first_not_of(' '));
+#else
         s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+#endif
         return s;
     }
     
     // Trim string from end
     inline std::string& TrimStringEnd(std::string &s) {
+#ifdef _WIN32
+        s.erase(s.find_last_not_of(' ')+1);
+#else
         s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
+#endif
         return s;
     }
     

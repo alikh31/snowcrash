@@ -20,10 +20,10 @@ bool snowcrash::RegexMatch(const std::string& target, const std::string& express
         return false;
     
     try {
-        std::regex pattern(expression, std::regex_constants::extended);
-        return std::regex_search(target, pattern);
+        std::tr1::regex pattern(expression, std::tr1::regex_constants::extended);
+        return std::tr1::regex_search(target, pattern);
     }
-    catch (const std::regex_error&) {
+    catch (const std::tr1::regex_error&) {
     }
     catch (...) {
     }
@@ -50,12 +50,12 @@ bool snowcrash::RegexCapture(const std::string& target, const std::string& expre
 
     try {
         
-        std::regex pattern(expression, std::regex_constants::extended);
-        std::match_results<std::string::const_iterator> result;
-        if (!std::regex_search(target, result, pattern))
+        std::tr1::regex pattern(expression, std::tr1::regex_constants::extended);
+        std::tr1::match_results<std::string::const_iterator> result;
+        if (!std::tr1::regex_search(target, result, pattern))
             return false;
     
-        for (std::match_results<std::string::const_iterator>::const_iterator it = result.begin();
+        for (std::tr1::match_results<std::string::const_iterator>::const_iterator it = result.begin();
              it != result.end();
              ++it) {
 
@@ -64,7 +64,7 @@ bool snowcrash::RegexCapture(const std::string& target, const std::string& expre
 
         return true;
     }
-    catch (const std::regex_error&) {
+    catch (const std::tr1::regex_error&) {
     }
     catch (...) {
     }
